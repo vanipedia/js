@@ -5,21 +5,27 @@
  ************************************************************/
 
 $(document).ready(function() {
-    $('#searchInput').autocomplete("/php/cat-page_search.php", {
+    var options_search = {
         minChars: 3,
         resultsClass: 'cat-page-suggest_results',
         max: 100,
         delay: 500,
+        width: '45em',
         caheLength: 1,
         fixed: false,
-        width: '45em',
         matchContains: true,
         extraParams: { namespace: 'all' }
-    });
+    }
+    $('#searchInput').autocomplete("/php/cat-page_search.php", options_search);
+    // Test if we are in Special:Search
+    if($('form#search #searchText').length === 1) {
+        options_search['width'] = false;
+        $('form#search #searchText').autocomplete("/php/cat-page_search.php", options_search);
+    }
     if(wgPageName === "Special:AllPages") {
         var table = $('table.allpages');
         var ns = $('#namespace option:selected', table).val() //element selected for searching
-        var options = {
+        var options_allpages = {
             minChars: 3,
             resultsClass: 'cat-page-suggest_results',
             max: 45,
