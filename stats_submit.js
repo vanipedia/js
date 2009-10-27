@@ -4,8 +4,8 @@
  *  produce a "Total of totals" by maintainig a mysql table with this data.
  **********************************************************************************/
 if (wgAction == 'view' && wgCanonicalNamespace == '') {
-    $php_dir = '/php_scripts/';
-    $(document).ready(function() {     
+    $php_dir = '/php/';
+    $(document).ready(function() {
         /*** Submition ***/
         // Get stats from table
         $('.smwprops').each(function() {
@@ -17,7 +17,7 @@ if (wgAction == 'view' && wgCanonicalNamespace == '') {
         if (typeof stats != 'undefined' ) {
             $.get($php_dir+"vani-stats.php", { pageId: wgArticleId, page_stats: stats });
         }
-        
+
         /*** Update results ***/
         //Query results if page == Main Page
         if (wgArticleId == 1) {

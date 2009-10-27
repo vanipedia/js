@@ -7,13 +7,11 @@
 //First check if the current page is an Article and is in view mode
 if (wgIsArticle && location.search && wgAction == "view") {
   if (/terms/.test(this.location.search)) {
-    //var $jquery_dir = '/jquery/';
     var $jquery_dir = '/js/jquery/';
     //document.write('<script type="text/javascript" src="'+$jquery_dir+'jquery.highlight_sanskrit.js"></' + 'script>');
     document.write('<script type="text/javascript" src="'+$jquery_dir+'jquery.getParams.js"></script>');
     document.write('<script type="text/javascript" src="'+$jquery_dir+'scrollTo.js"></' + 'script>');
-    document.write('<script type="text/javascript" src="'+$jquery_dir+'RegExp.escape.js"></' + 'script>');
-
+s
     $(document).ready(function() {
         // Get params in url
         var terms, first, last, re_first, re_last, found, p, area, w, t, h, diff, off;
