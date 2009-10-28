@@ -36,8 +36,8 @@ $(document).ready(function() {
             extraParams: { namespace: ns  }
         };
         if(ns === '0') {
-            options['width'] = '45em';
+            options_allpages['width'] = '45em';
         }
-        $('#nsfrom', table).autocomplete("/php/cat-page_search.php", options);
+        $('#nsfrom', table).autocomplete("/php/cat-page_search.php", options_allpages);
    }
 });
