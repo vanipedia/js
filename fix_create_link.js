@@ -23,3 +23,4 @@ if (wgPageName == 'Special:Search' && wgUserName != null) {
         });
     });
 }
+

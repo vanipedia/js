@@ -50,3 +50,4 @@ if (wgAction == 'view' && wgCanonicalNamespace == '') {
         }
     });
 } // End of if (wgAction == edit)
+

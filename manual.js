@@ -1,14 +1,15 @@
+
 /*********************************************************
 *   jQuery for Vanipedia Manual images, videos and effects
 **********************************************************/
 
-/*  
+/*
     Zoomimage for images in Vanipedia
     For safety (browser incompatibility, javascript turned-off) I have left the original images from wiki and simply transform them with the script.
     Images must reside both within the wiki and in the /images folder
 */
 if (/^Manual/.test(wgPageName)) {
-    
+
     // Dependencies
     $jquery_dir = '/jquery/';
     document.write('<link rel="stylesheet" media="screen" type="text/css" href="'+$jquery_dir+'zoomimage/css/zoomimage.css" />');
@@ -16,7 +17,7 @@ if (/^Manual/.test(wgPageName)) {
     document.write('<script type="text/javascript" src="'+$jquery_dir+'zoomimage/js/utils.js"></script>');
     document.write('<script type="text/javascript" src="'+$jquery_dir+'zoomimage/js/zoomimage.js"></script>');
     document.write('<script type="text/javascript" src="'+$jquery_dir+'flashdetect.js"></script>');
-    
+
     $(document).ready(function() {
         // Manual:Main page slideToggles
         $('.m_main_desc').hide();
@@ -26,12 +27,12 @@ if (/^Manual/.test(wgPageName)) {
             $('#'+desc).slideToggle('medium');
         });
         // Manual toogle Expand/Collapse All
-        $('#toggle_divs').wrap('<a title="click to expand and collapse all descriptions"></a>').css({cursor: "pointer", color: "#51CD51", float: "right" }).toggle(function() {
+        $('#toggle_divs').wrap('<a title="click to expand and collapse all descriptions"></a>').css({cursor: "pointer", color: "#51CD51", "float": "right" }).toggle(function() {
             $('.m_main_desc').slideDown('medium');
             $(this).text('Collapse All');
         },function() {
             $('.m_main_desc').slideUp('medium');
-            $(this).text('Expand All');            
+            $(this).text('Expand All');
             })
         // implement zoomimage to images in the Manual
         $('.img_container a').each(function() {
@@ -81,7 +82,7 @@ if (/^Manual/.test(wgPageName)) {
             $('#'+div).slideToggle('medium');
         });
         // Css to make headings the same as Manual:Main according to each
-        
+
         // Flash detection for Manual
         if (!flashdetect([8,0,0])) {
             $('.flash_warning').html('If your session times out during a long editing session, you may be logged out. We have developed a system that will automatically save all your compilation data in the clipboard. The only requirement is that you have installed the latest version of Macromedia Flash. Until you update your Flash plugin the only way to avoid loosing your data in a session timeout is:<br>1.  Place your cursor in the Edit Box<br>2.  Select all the text (Control-a)<br>3.  Copy (Control-c)<br>4.  Press the "Save page" button.');
