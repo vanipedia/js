@@ -14,6 +14,7 @@ $(document).ready(function() {
         fixed: false,
         width: '45em',
         matchContains: true,
+        selectFirst: false,
         extraParams: { namespace: 'all' }
     });
     if(wgPageName === "Special:AllPages") {
@@ -27,6 +28,7 @@ $(document).ready(function() {
             caheLength: 1,
             fixed: false,
             matchContains: true,
+            selectFirst: false,
             extraParams: { namespace: ns  }
         };
         if(ns === '0') {
