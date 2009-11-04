@@ -1,6 +1,10 @@
-compile-2.0
-jquery
-jquery-ui
-jmvc_bak
+yuicompressor-2.4.2.jar
+create_production.sh
 .DS_Store
+compile-2.0/
+create_production.sh
+jmvc_bak/
+jquery
+jquery-ui/
 js.kpf
+
