@@ -4,7 +4,7 @@
  *  produce a "Total of totals" by maintainig a mysql table with this data.
  **********************************************************************************/
 if (wgAction == 'view' && wgNamespaceNumber === 0) {
-    $php_dir = '/php_scripts/';
+    $php_dir = '/php/';
     $(document).ready(function() {
         /*** Update results ***/
         //Query results if page == Main Page
