@@ -9,7 +9,7 @@
 $(document).ready(function() {
     // Make verse editable so the sanskrit editor (Matea)
     // can correct spacing and other stuff that may come up
-    $('.verse, .converted').click(function () {
+    $('.verse, .sanskrit_uni').click(function () {
         $(this).editable(function(text) {
             if(text.match(/\)$/m)) {
                 text = fix_numbers(text);
@@ -17,19 +17,17 @@ $(document).ready(function() {
             return text;
         },{
             type: 'textarea',
-            onblur: 'submit'
+            onblur: 'submit',
+            callback: function() { update_sanskrit(this); }
         });
     });
     // Grab the submit action and do the ajax submit
-    $('.submit').click(function() {
-        $('#ajax > #msg').text('Fetching devanagari...')
-        verse = clean_for_submit($(this).siblings('.verse').html());
-        translate_diCrunch(verse, this);
-    });
+    $('.update_sanskrit').click(function() { update_sanskrit(this); });
+
     $('.fix_numbers').click(function() {
         message('Fixing numbers...')
         orig = $(this).siblings('.indevr');
-        deva = $(this).siblings('.converted');
+        deva = $(this).siblings('.sanskrit_uni');
         orig_a = orig.html().split(/<br\/?>/);
         deva_a = deva.html().split(/\n/);
         if(orig_a.length === deva_a.length) {
@@ -43,10 +41,10 @@ $(document).ready(function() {
             new_deva = deva_a.join('\n');
             if(deva.html() !== new_deva) {
                 deva.html(new_deva);
-                console.log(new_deva);
+                //console.log(new_deva);
             }
         } else {
-            alert("Original devanagari is not equal to converted!");
+            alert("Original sanskrit is not equal to unicode sanskrit!");
         }
     });
     // Create loading div for ajax and other messages. Make sure you place the message before the ajax call
@@ -57,11 +55,12 @@ $(document).ready(function() {
     // Save
     $('.save').click(function() {
             $('#ajax > #msg').text('Saving...');
+            $(this).siblings('.status').addClass('saving');
         $.get('/php/convert_devanagari_save.php', {
-            id: $(this).siblings('.id').text(),
-            deva: $(this).siblings('.converted').text()
+            title: $(this).siblings('.id').text(),
+            sanskrit_uni: $(this).siblings('.sanskrit_uni').text()
         }, function(r) {
-            message('Saved!');
+            saved();
         });
     })
 });
@@ -75,11 +74,16 @@ function translate_diCrunch(verse, elem) {
         function(resp) {
             console.log(resp);
             out = $('#source', resp).val();
-            $(elem).siblings('.converted').html(out);
+            $(elem).siblings('.sanskrit_uni').html(out);
         }
     );
 }
 
+function update_sanskrit(elem) {
+    $('#ajax > #msg').text('Fetching devanagari...')
+    verse = elem.className === 'verse' ? clean_for_submit($(elem).html()) : clean_for_submit($(elem).siblings('.verse').html());
+    translate_diCrunch(verse, elem);
+};
 function clean_for_submit(v) {
     v = v.replace(/-/g, '');
     v = v.replace(/ '/g, '');
@@ -102,5 +106,14 @@ function fix_numbers(n) {
 }
 function message(msg) {
     $('#ajax > #msg').text(msg).parent().show();
-    setTimeout(function() { $('#ajax').fadeOut('slow') }, 1000);
+    setTimeout(function() { $('#ajax').fadeOut('slow') }, 800);
+}
+function saved(elem) {
+    message('Saved!');
+    disable($('.saving').parent());
+}
+function disable(elem) {
+    $('.status', elem).removeClass('saving').text('saved');
+    $(elem).css({ opacity: '0.5' });
+    $(elem).children().attr('disabled', 'disabled');
 }
