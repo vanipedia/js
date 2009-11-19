@@ -6,11 +6,11 @@
  *      verse back in the page for comparison with original
  *      Indevr code
  ******************************************************************/
-// Dependencies
+/*** Dependencies ***/
 document.write('<script type="text/javascript" src="/js/jquery/jquery.jeditable.min.js"></script>');
 document.write('<script type="text/javascript" src="/js/jquery-ui/js/jquery-ui-1.7.2.custom.min.js"></script>');
-document.write('<script type="text/javascript" src="/js/jquery.hoverIntent.minified.js"></script>');
 
+/*** Main ***/
 $(document).ready(function() {
     // Make verse editable so the sanskrit editor (Matea)
     // can correct spacing and other stuff that may come up
@@ -83,8 +83,8 @@ $(document).ready(function() {
     });
     // Hook the ajax element to notify ajax activity
     $('#ajax').
-        ajaxStart(function() { ajax_ui('show'); }).
-        ajaxStop(function() { ajax_ui('hide'); });
+        ajaxStart(function() { if($('#tools').is(':visible')) ajax_ui('show'); }).
+        ajaxStop(function() { if($('#tools').is(':visible')) ajax_ui('hide'); });
 
     // Save
     $('.save').click(function() {
@@ -119,37 +119,6 @@ $(document).ready(function() {
         $('.verse_div').unbind("mouseenter", enter_verse).unbind("mouseleave", out_verse);
     });
 
-    // hover functions for verse_divs
-    function enter_verse() {
-        var that = this;
-        $(this).addClass("focused").removeClass("unfocused");
-        setTimeout(function() {
-            if($(that).hasClass("focused")) {
-                console.log('in mouseenter');
-                $(that).css({
-                    "font-size": "1.2em",
-                    "line-height": "1.5"
-                });
-                $(that).animate({ width: "600px" });
-            }
-        }, 500);
-    }
-    function out_verse() {
-        var that = this;
-        $(this).addClass("unfocused").removeClass("focused");
-        setTimeout(function() {
-            if($(that).hasClass("unfocused")) {
-                $(that).removeClass("unfocused");
-                console.log('in mouseout');
-                $(that).css({
-                    "font-size": "",
-                    "line-height": ""
-                });
-                $(that).animate({ width: "500px"});
-            }
-        }, 800);
-    }
-
     // Zoom in and out buttons
     $('.zoom_b').mousedown(function() {
         $(this).css('color', 'white');
@@ -158,11 +127,24 @@ $(document).ready(function() {
         $(this).css('color', '');
         $(this).attr('id') === 'zoom_plus' ? zoom('in') : zoom('out');
     });
-});
+
+    // More verses will display the next batch of verses simply by doing a full refresh
+    $('#more').click(function() { window.location.reload( true ); });
+
+    // Attach Introduction and Manual effects
+    $('.desc_handle').toggle(function() {
+        var desc;
+        desc = '#'+$(this).attr('id')+ '_desc';
+        $(desc).slideDown();
+    }, function() {
+        desc = '#'+$(this).attr('id')+ '_desc';
+        $(desc).slideUp();
+    });
+}); // End of Main
 
 
+/*** Helper functions for events and processing verses ***/
 // FUnction that submits the verse to diCrunch dictionary online with a GET ajax request
-
 function translate_diCrunch(verse, elem) {
     var out;
     $.get('/php/diCrunch-request.php',
@@ -178,7 +160,9 @@ function translate_diCrunch(verse, elem) {
 function update_sanskrit(elem) {
     var verse;
     $('#ajax > #msg').text('Fetching devanagari...')
-    verse = elem.className === 'verse' ? clean_for_submit($(elem).html()) : clean_for_submit($(elem).siblings('.verse').html());
+    verse = elem.className === 'verse' ?
+        clean_for_submit($(elem).html()) :
+        clean_for_submit($(elem).siblings('.verse').html());
     translate_diCrunch(verse, elem);
 };
 function clean_for_submit(v) {
@@ -202,6 +186,7 @@ function fix_numbers(n) {
     return n;
 }
 function message(msg) {
+    if($('#tools').is(':hidden')) { return; }
     $('#ajax > #msg').text(msg);
     ajax_ui('show');
     setTimeout(function() { ajax_ui('hide'); }, 800);
@@ -237,13 +222,51 @@ function zoom(action) {
     lh = Number(v.css('line-height').match(/\d+/));
     w = Number(v.css('width').match(/\d+/));
     if(action === 'in') {
-        $('.verse_div').css({ "font-size": fs + 2 + 'px', "line-height": lh + 6 + 'px', width: w + 50 + 'px' });
+        $('.verse_div').css({
+            "font-size": fs + 2 + 'px',
+            "line-height": lh + 6 + 'px',
+            width: w + 50 + 'px'
+        });
     } else {
-        $('.verse_div').css({ "font-size": fs - 2 + 'px', "line-height": lh - 6 + 'px' , width: w - 50 + 'px'});
+        $('.verse_div').css({
+            "font-size": fs - 2 + 'px',
+            "line-height": lh - 6 + 'px' ,
+            width: w - 50 + 'px'
+        });
     }
 }
 function zoom_off() {
     if($('#zoom_all').text().match(/off/i)) {
         $('#zoom_all').click();
     }
+}
+// hover functions for verse_divs.
+// a timeout is set to avoid erratic hover in and out of verse while
+// scrolling over child elements
+function enter_verse() {
+    var that = this;
+    $(this).addClass("focused").removeClass("unfocused");
+    setTimeout(function() {
+        if($(that).hasClass("focused")) {
+            $(that).css({
+                "font-size": "1.2em",
+                "line-height": "1.5"
+            });
+            $(that).animate({ width: "600px" });
+        }
+    }, 300);
+}
+function out_verse() {
+    var that = this;
+    $(this).addClass("unfocused").removeClass("focused");
+    setTimeout(function() {
+        if($(that).hasClass("unfocused")) {
+            $(that).removeClass("unfocused");
+            $(that).css({
+                "font-size": "",
+                "line-height": ""
+            });
+            $(that).animate({ width: "500px"});
+        }
+    }, 800);
 }
