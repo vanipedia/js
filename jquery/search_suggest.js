@@ -11,7 +11,7 @@ if ($('#searchInput') || $('#google_search')) {
 	document.write('<script type="text/javascript" src="'+ $jquery_auto+ 'lib/jquery.ajaxQueue.js"></' + 'script>');
 	document.write('<link rel="stylesheet" type="text/css" href="'+$jquery_auto+'jquery.autocomplete.css" />');
 
-	$('document').ready(function () {
+	$(document).ready(function () {
 		$("#searchInput").autocomplete("/php_scripts/dictionary.php", {
 			scroll: true,
 		  autofill: false,
