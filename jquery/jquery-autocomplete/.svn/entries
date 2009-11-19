@@ -1,0 +1,68 @@
+8
+
+dir
+85
+file:///home/acyuta/svn3/jquery/trunk/jquery-autocomplete
+file:///home/acyuta/svn3/jquery
+
+
+
+2008-10-15T12:49:33.589357Z
+54
+acyuta
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+f21de85b-83be-4c55-84cb-525249291887
+
+indicator.gif
+file
+
+
+
+
+2008-10-15T12:49:33.000000Z
+03ce3dcc84af110e9da8699a841e5200
+2008-10-15T12:49:33.589357Z
+54
+acyuta
+has-props
+
+lib
+dir
+
+jquery.autocomplete.css
+file
+
+
+
+
+2008-10-15T12:49:33.000000Z
+ae37bd0091c14473a56a7303fd09c027
+2008-10-15T12:49:33.589357Z
+54
+acyuta
+
+jquery.autocomplete-bundle.pack.js
+file
+
+
+
+
+2008-10-15T12:49:33.000000Z
+56e412b4f4fe5a37401f7280865a8ec9
+2008-10-15T12:49:33.589357Z
+54
+acyuta
+
