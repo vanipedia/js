@@ -12,7 +12,7 @@ if ($('#searchInput') || $('#google_search')) {
 	document.write('<link rel="stylesheet" type="text/css" href="'+$jquery_auto+'jquery.autocomplete.css" />');
 
 	$('document').ready(function () {
-		$("#google_search, #searchInput").autocomplete("/php_scripts/dictionary.php", {
+		$("#searchInput").autocomplete("/php_scripts/dictionary.php", {
 			scroll: true,
 		  autofill: false,
 		  selectFirst: false,
