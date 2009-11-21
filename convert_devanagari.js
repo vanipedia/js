@@ -7,9 +7,7 @@
  *      Indevr code
  ******************************************************************/
 /*** Dependencies ***/
-document.write('<script type="text/javascript" src="/js/jquery/jquery.jeditable.min.js"></script>');
-document.write('<script type="text/javascript" src="/js/jquery-ui/js/jquery-ui-1.7.2.custom.min.js"></script>');
-
+// No dependendencies in the production version of this script
 /*** Main ***/
 $(document).ready(function() {
     // Make verse editable so the sanskrit editor (Matea)
