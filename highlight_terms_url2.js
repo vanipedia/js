@@ -7,14 +7,9 @@
 //First check if the current page is an Article and is in view mode
 if (wgIsArticle && location.search && wgAction == "view") {
   if (/terms/.test(this.location.search)) {
-    var $jquery_dir = '/js/jquery/';
-    //document.write('<script type="text/javascript" src="'+$jquery_dir+'jquery.highlight_sanskrit.js"></' + 'script>');
-    document.write('<script type="text/javascript" src="'+$jquery_dir+'jquery.getParams.js"></script>');
-    document.write('<script type="text/javascript" src="'+$jquery_dir+'scrollTo.js"></' + 'script>');
-s
     $(document).ready(function() {
-        // Get params in url
         var terms, first, last, re_first, re_last, found, p, area, w, t, h, diff, off;
+        // Get params in url
         terms = decode('terms').split('+');
         first = decode('first');
         last  = decode('last');
@@ -56,10 +51,9 @@ s
         off = diff <= 0 ? -50 : -diff / 2;
         // Scroll to first p.highlight_quote or .highlight_terms
         $.scrollTo(t, '1500', {offset: off});
-
-        function decode(param) {
-            return decodeURI($.getURLParam(param));
-        }
     });
+    function decode(param) {
+        return decodeURI($.getURLParam(param));
+    }
   }
 }
