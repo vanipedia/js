@@ -1,7 +1,8 @@
-
-if(/&diff=/.test(document.location)) {
+if(/^BG /.test(wgTitle) && /&diff=/.test(document.location)) {
     $(document).ready(function() {
-        $('#diff_link').parent().hide();
+        $('.verse_tools').hide();
+        if(!/&htmldiff=0/.test(document.location)) {
+            $('.diff').hide();
+        }
     });
 }
-
