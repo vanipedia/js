@@ -1,9 +1,8 @@
-
-if(/^BG \d+\.\d+/.test(wgTitle) && /&diff=/.test(document.location)) {
-    $(document).ready(function() {
+$(document).ready(function() {
+    if(wgTitle == 'BG edition comparison') {
         $('.verse_tools').hide();
-        if(!/&htmldiff=0/.test(document.location)) {
-            $('.diff').hide();
+        if(!/&visual=0/.test(document.location)) {
+            $("#devanagari, #text").css('white-space', 'normal');
         }
-    });
-}
+    }
+});
