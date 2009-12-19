@@ -38,10 +38,17 @@ function get_stats() {
             var LEC = json.LEC;
             var LET = json.LET;
             var CON = json.CON;
+            var Total_of_totals = json.TOTAL;
             var CATS = json.CATS;
             var PAGES = json.PAGES;
-            var Total_of_totals = json.TOTAL;
-            var stats_html = 'So far we have compiled:<br>BG: '+BG+' quotes<br>SB: '+SB+' quotes<br>CC: '+CC+' quotes<br>Other Books: '+OB+' quotes<br>Lectures: '+LEC+' quotes<br>Letters: '+LET+' quotes<br>Conversations: '+CON+' quotes<br>Total: '+Total_of_totals+' quotes<br>(This totals are being updated)';
+            var COMPLETE = json.COMPLETE;
+            var INCOMPLETE = json.INCOMPLETE;
+
+            var q_goal = num($('#quotes-goal').text());
+            var p_goal = num($('#pages-goal').text());
+            var q_goal_percent = parseInt( (num(Total_of_totals)/q_goal) * 100);
+            var p_goal_percent = parseInt( (num(PAGES)/p_goal) * 100);
+
             $('span#bg-stats').text(BG);
             $('span#sb-stats').text(SB);
             $('span#cc-stats').text(CC);
@@ -52,6 +59,15 @@ function get_stats() {
             $('span#total-stats').text(Total_of_totals);
             $('span#cats-stats').text(CATS);
             $('span#pages-stats').text(PAGES);
+            $('span#pages-complete').text(COMPLETE);
+            $('span#pages-incomplete').text(INCOMPLETE);
+            $('#quotes-goal-percent').text(q_goal_percent);
+            $('#pages-goal-percent').text(p_goal_percent);
         }
     );
+}
+
+// Convert to number by removing comma(,) or period(.) and returning int number
+function num(n) {
+    return parseInt(n.replace(/[,.]/g, ''));
 }
