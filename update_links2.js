@@ -38,7 +38,7 @@ if (wgAction == 'view' && wgCanonicalNamespace == '') {
             last = last.replace(/.+\n+(.+)/, '$1');
             // Assemble the string with the terms, the head of the quote and the quote's length and type (div for multiple paragraph)
             search_str = this.href+'?terms='+terms.join('+')+'&first='+first+'&last='+last;
-            $(this).attr({href: search_str, class: 'selected'});
+            $(this).attr({ href: search_str }).addClass('selected');
         }
       }
     }

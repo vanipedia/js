@@ -2,7 +2,7 @@
  *  jQuery function to parse url_terms from url when current page was linked from Vaniquotes
  *  The vaniquotes link was modified to include these url_terms in order to
  *  highlight them in the current page in Vanisource
- **************************************************************************/  
+ **************************************************************************/
 
 //First check if the current page is an Article and is in view mode
 if (wgIsArticle && location.search && wgAction == "view") {

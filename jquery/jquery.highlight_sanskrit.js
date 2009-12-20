@@ -17,14 +17,14 @@
     };
     var opts = $.extend(defaults, options);
     return this.each(function() {
-      
+
       if (/ä|é|ü|å|è|ì|ï|ö|ò|ë|ç|à|ù|ÿ|û|Ä|É|Ü|Å|È|Ì|Ñ|Ï|Ö|Ò|Ë|Ç|À|Ù|ß/.test(key)) {
         key = UniToASCII(Unify(key));
       }
       if(/ā|ī|ū|ṛ|ṟ|ṅ|ṣ|ñ|ṭ|ḍ|ṇ|ś|ṁ|ḥ|ḷ|ḻ|Ā|Ī|Ū|Ṛ|Ṟ|Ṣ|Ñ|Ṭ|Ḍ|Ṇ|Ś|Ṁ|Ḥ|Ḷ/.test(key)) {
         key = UniToASCII(key);
       }
-      
+
       var html_1    = $(this).html();
       var html_2    = UniToASCII(html_1);
       var html_f = html_1;
@@ -48,7 +48,7 @@
           var b1      = html_1.substring(a1.length+len);
           var b2      = html_2.substring(a2.length+len);
           html_1 = a1+key1+b1;
-          html_2 = a2+key2+b2;        
+          html_2 = a2+key2+b2;
           found       = indexes[m]+key2.length;
         $(this).html(html_1);
         }
