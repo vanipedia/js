@@ -32,7 +32,7 @@ echo "Gathering data in development files...\n";
 foreach($m[0] as $f) {
   if($paths_found) {
     foreach($paths as $p) {
-      $f = preg_replace(array("!'\+$p[var]\+'!", "!^/js/!"), array($p[path], ""), $f);
+      $f = preg_replace(array("!'\s?\+\s?$p[var]\s?\+\s?'!", "!^/js/!"), array($p[path], ""), $f);
     }
   }
   echo "    $f\n";
