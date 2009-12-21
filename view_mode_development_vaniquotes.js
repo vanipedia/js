@@ -17,5 +17,3 @@ document.write('<script type="text/javascript" src="'+js+'search_suggest.js"></'
 document.write('<script type="text/javascript" src="'+js+'manual.js"></' + 'script>');
 document.write('<script type="text/javascript" src="'+js+'fix_create_link.js"></' + 'script>');
 document.write('<script type="text/javascript" src="'+resources+'jquery-autocomplete/jquery.autocomplete.js"></' + 'script>');
-document.write('<link rel="stylesheet" type="text/css" href="'+css+'view_mode.css" />');
-document.write('<link rel="stylesheet" type="text/css" href="'+css+'jquery.autocomplete.css" />');
