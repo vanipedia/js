@@ -47,7 +47,7 @@ function get_stats() {
             var q_goal = num($('#quotes-goal').text());
             var p_goal = num($('#pages-goal').text());
             var q_goal_percent = parseInt( (num(Total_of_totals)/q_goal) * 100);
-            var p_goal_percent = parseInt( (num(PAGES)/p_goal) * 100);
+            var p_goal_percent = parseInt( (num(COMPLETE)/p_goal) * 100);
 
             $('span#bg-stats').text(BG);
             $('span#sb-stats').text(SB);
