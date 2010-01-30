@@ -8,6 +8,8 @@ document.write('<script type="text/javascript" src="/js/BaltoUni.js"></' + 'scri
 document.write('<script type="text/javascript" src="/js/UnitoASCII.js"></' + 'script>');
 // install Regexp.escape
 document.write('<script type="text/javascript" src="/js/RegExp.escape.js"></' + 'script>');
+// install jquery.highlight_sanskrit.js
+document.write('<script type="text/javascript" src="/js/jquery/jquery.highlight_sanskrit.js"></' + 'script>');
 // install HighlightTermsURL
 document.write('<script type="text/javascript" src="/js/highlight_terms_url2.js"></' + 'script>');
 // install ScrollTo
