@@ -10,5 +10,5 @@ $(document).ready(function() {
         $.cookie('indevr', indevr_detect.test("Indevr"));
     }
     // If system has Indevr font apply it else hide the devanagari
-    $.cookie('indevr') ? $("#devanagari").css('font-family', 'Indevr') : $("#devanagari").hide();
+    $.cookie('indevr') === false ? $("#devanagari").css('font-family', 'Indevr') : $("#devanagari").hide();
 });
