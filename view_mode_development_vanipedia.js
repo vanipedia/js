@@ -4,5 +4,7 @@ var jquery = '/js/jquery/';
 var css = '/css/';
 var js = '/js/';
 
-document.write('<script type="text/javascript" src="'+resources+'jquery.min.js"></' + 'script>');
+document.write('<script type="text/javascript" src="'+jquery+'jquery.min.js"></' + 'script>');
 document.write('<script type="text/javascript" src="'+js+'stats_submit.js"></' + 'script>');
+document.write('<script type="text/javascript" src="'+jquery+'jquery.countdown.pack.js"></' + 'script>');
+document.write('<script type="text/javascript" src="'+js+'countdown_to_birthday.js"></' + 'script>');
