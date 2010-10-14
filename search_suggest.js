@@ -17,7 +17,7 @@ $(document).ready(function() {
         selectFirst: false,
         extraParams: { namespace: 'all' }
     });
-    if(wgPageName === "Special:AllPages") {
+    if(/Special:/.test(wgPageName)) {
         var table = $('table.allpages');
         var ns = $('#namespace option:selected', table).val() //element selected for searching
         var options = {
