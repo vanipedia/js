@@ -51,9 +51,10 @@ if (wgIsArticle && location.search && wgAction == "view") {
         off = diff <= 0 ? -50 : -diff / 2;
         // Scroll to first p.highlight_quote or .highlight_terms
         $.scrollTo(t, '1500', {offset: off});
-    });
-    function decode(param) {
-        return decodeURI($.getUrlParam(param));
-    }
+    
+	    function decode(param) {
+	        return decodeURI($.getUrlParam(param));
+	    }
+	});
   }
 }
