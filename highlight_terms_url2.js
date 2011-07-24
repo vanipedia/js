@@ -53,7 +53,7 @@ if (wgIsArticle && location.search && wgAction == "view") {
         $.scrollTo(t, '1500', {offset: off});
     });
     function decode(param) {
-        return decodeURI($.getURLParam(param));
+        return decodeURI($.getUrlParam(param));
     }
   }
 }
