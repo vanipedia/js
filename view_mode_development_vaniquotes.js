@@ -6,7 +6,7 @@ var js = '/js/';
 
 document.write('<script type="text/javascript" src="'+resources+'jquery.min.js"></' + 'script>');
 document.write('<script type="text/javascript" src="'+resources+'BaltoUni.js"></' + 'script>');
-document.write('<script type="text/javascript" src="'+resources+'UniToASCII.js"></' + 'script>');
+document.write('<script type="text/javascript" src="'+resources+'UnitoASCII.js"></' + 'script>');
 document.write('<script type="text/javascript" src="'+resources+'jquery.highlight_sanskrit.js"></' + 'script>');
 document.write('<script type="text/javascript" src="'+resources+'highlight_terms.js"></' + 'script>');
 document.write('<script type="text/javascript" src="'+js+'highlight_terms_url2.js"></' + 'script>');
